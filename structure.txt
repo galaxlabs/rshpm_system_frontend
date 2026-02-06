@@ -1,0 +1,73 @@
+.
+├── .env.local
+├── .gitignore
+├── README.md
+├── index.css
+├── index.html
+├── index.tsx
+├── package-lock.json
+├── package.json
+├── phase2.sh
+├── src
+│   ├── api
+│   │   ├── frappe.ts
+│   │   ├── http.ts
+│   │   └── resource.ts
+│   ├── app
+│   │   ├── NotFound.tsx
+│   │   ├── main.tsx
+│   │   └── routes.tsx
+│   ├── auth
+│   │   ├── AuthContext.tsx
+│   │   └── ProtectedRoute.tsx
+│   ├── components
+│   │   ├── ResourceListPage.tsx
+│   │   └── ui
+│   ├── layout
+│   │   └── AppShell.tsx
+│   ├── modules
+│   │   └── rshpm
+│   │       ├── doctypeRegistry.ts
+│   │       ├── pages
+│   │       │   ├── DashboardPage.tsx
+│   │       │   ├── DoctypeFormPage.tsx
+│   │       │   ├── DoctypeListPage.tsx
+│   │       │   └── LoginPage.tsx
+│   │       ├── registry
+│   │       └── ui
+│   ├── types
+│   │   └── generated
+│   │       └── RshpmSystem
+│   │           ├── Allotment.ts
+│   │           ├── Amenity.ts
+│   │           ├── AmenityCategory.ts
+│   │           ├── Attachments.ts
+│   │           ├── BankTransactions.ts
+│   │           ├── Block.ts
+│   │           ├── BlockLayoutPlan.ts
+│   │           ├── Booking.ts
+│   │           ├── Client.ts
+│   │           ├── DocumentTypes.ts
+│   │           ├── FollowUps.ts
+│   │           ├── HousingScheme.ts
+│   │           ├── Inquiry.ts
+│   │           ├── InstallmentScheduleTable.ts
+│   │           ├── LayoutPlanItems.ts
+│   │           ├── OwnershipTransfer.ts
+│   │           ├── Payment.ts
+│   │           ├── PaymentAllocation.ts
+│   │           ├── Possession.ts
+│   │           ├── Property.ts
+│   │           ├── PropertyAmenity.ts
+│   │           ├── PropertyOwnership.ts
+│   │           ├── PropertyPriceHistory.ts
+│   │           └── Watchlist.ts
+│   └── utils
+├── structure.txt
+├── tsconfig.json
+├── types
+│   └── RshpmSystem
+│       └── Property.ts
+└── vite.config.ts
+
+19 directories, 52 files
