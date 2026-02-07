@@ -96,23 +96,28 @@ export default function ResourceListPage({ doctype, basePath }: Props) {
           className="px-2 py-1 rounded border"
           disabled={page <= 1 || loading}
           onClick={() => {
-            params.set("page", String(Math.max(1, page - 1)));
-            setParams(params);
+            const next = new URLSearchParams(params);
+            next.set("page", String(Math.max(1, page - 1)));
+            setParams(next);
           }}
+
         >
           Prev
         </button>
         <div className="text-slate-600">Page {page}</div>
-        <button
+          <button
           className="px-2 py-1 rounded border"
           disabled={loading || rows.length < limit}
           onClick={() => {
-            params.set("page", String(page + 1));
-            setParams(params);
-          }}
+          const next = new URLSearchParams(params);
+          next.set("page", String(page + 1));
+          setParams(next);
+        }}
+
         >
-          Next
-        </button>
+    Next
+  </button>
+
       </div>
 
       {loading && <div className="text-slate-600">Loading...</div>}
