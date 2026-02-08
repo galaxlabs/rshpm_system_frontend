@@ -18,7 +18,7 @@ function StatCard({
   icon: React.ElementType;
 }) {
   return (
-    <Card className="shadow-sm">
+    <Card className="shadow-xs">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">{title}</CardTitle>
         <Icon className="h-5 w-5 text-muted-foreground" />
@@ -76,7 +76,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <Card className="shadow-sm">
+      <Card className="shadow-xs">
         <CardHeader className="pb-3">
           <CardTitle className="text-base">Quick Actions</CardTitle>
           <p className="text-sm text-muted-foreground">

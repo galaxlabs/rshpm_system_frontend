@@ -2,6 +2,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "@/auth/ProtectedRoute";
 import AppShell from "@/layout/AppShell";
+import PaymentsListPage from "@/features/payments/PaymentsListPage"
 
 import LoginPage from "@/modules/rshpm/pages/LoginPage";
 import DashboardPage from "@/modules/rshpm/pages/DashboardPage";
@@ -11,7 +12,10 @@ import NotFound from "@/app/NotFound";
 
 export default function AppRoutes() {
   return (
+    
     <Routes>
+      <Route path="/payments" element={<PaymentsListPage />} />
+
       <Route path="/login" element={<LoginPage />} />
 
       <Route
