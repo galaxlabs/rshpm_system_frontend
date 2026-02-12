@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   getDoctypeConfig,
+  resolveDoctypeName,
   visibleFormFields,
   type FormField,
 } from "@/modules/rshpm/doctypeRegistry";
@@ -223,8 +224,9 @@ function LinkField({
 }
 
 export default function DoctypeFormPage({ mode }: Props) {
-  const { doctype, name } = useParams();
+  const { doctype: rawDoctype, name } = useParams();
   const nav = useNavigate();
+  const doctype = resolveDoctypeName(rawDoctype || "");
 
   const cfg = useMemo(() => (doctype ? getDoctypeConfig(doctype) : null), [doctype]);
   const formFields = useMemo(() => (cfg ? visibleFormFields(cfg) : []), [cfg]);

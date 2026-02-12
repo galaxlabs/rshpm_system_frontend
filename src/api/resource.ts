@@ -47,6 +47,17 @@ async function jsonOrThrow<T>(res: Response): Promise<T> {
   return data as T;
 }
 
+function isFieldSelectionError(message: string) {
+  const m = message.toLowerCase();
+  return (
+    m.includes("unknown column") ||
+    m.includes("invalid field") ||
+    m.includes("unknown field") ||
+    m.includes("column") ||
+    m.includes("field not permitted")
+  );
+}
+
 // --------------------
 // Named functions
 // --------------------
@@ -54,12 +65,26 @@ async function jsonOrThrow<T>(res: Response): Promise<T> {
 export async function listResources<T = any>(
   args: ListArgs
 ): Promise<{ data: T[] }> {
-  const res = await fetch(buildListUrl(args), {
-    method: "GET",
-    credentials: "include",
-    headers: { Accept: "application/json" },
-  });
-  return jsonOrThrow(res);
+  const request = async (requestArgs: ListArgs) => {
+    const res = await fetch(buildListUrl(requestArgs), {
+      method: "GET",
+      credentials: "include",
+      headers: { Accept: "application/json" },
+    });
+    return jsonOrThrow<{ data: T[] }>(res);
+  };
+
+  try {
+    return await request(args);
+  } catch (e: any) {
+    const msg = String(e?.message || "");
+    // Fallback to minimal field set so list view still renders even if some configured
+    // list fields no longer exist on the backend.
+    if (args.fields?.length && isFieldSelectionError(msg)) {
+      return await request({ ...args, fields: ["name"] });
+    }
+    throw e;
+  }
 }
 
 export async function getResource<T = any>(

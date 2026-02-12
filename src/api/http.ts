@@ -104,5 +104,15 @@ export async function postForm<T>(
     throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
   }
 
+  // Some Frappe auth failures can be returned with 200 + exception payload.
+  if (payload?.exc || payload?.exception) {
+    const msg =
+      parseServerMessage(payload) ||
+      payload?.message ||
+      payload?.exception ||
+      "Server error";
+    throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+  }
+
   return payload as T;
 }

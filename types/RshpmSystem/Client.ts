@@ -18,7 +18,7 @@ export interface Client{
 	cnic_number: string
 	/**	Date of Birth : Date	*/
 	date_of_birth?: string
-	/**	Company : Link - Company	*/
+	/**	Company : Link - Property Company	*/
 	company?: string
 	/**	Reletion With Nominee : Select	*/
 	reletion_with_nominee?: "Wife" | "Father" | "Mother" | "Son" | "Doughter" | "Sister" | "Brother"

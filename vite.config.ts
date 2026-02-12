@@ -24,6 +24,18 @@ export default defineConfig(({ mode }) => {
           target: frappeUrl,
           changeOrigin: true,
           secure: false,
+          configure(proxy) {
+            proxy.on("proxyRes", (proxyRes) => {
+              const setCookie = proxyRes.headers["set-cookie"];
+              if (!setCookie) return;
+              const cookies = Array.isArray(setCookie) ? setCookie : [setCookie];
+              proxyRes.headers["set-cookie"] = cookies.map((cookie) =>
+                cookie
+                  .replace(/;\s*Secure/gi, "")
+                  .replace(/;\s*Domain=[^;]+/gi, "")
+              );
+            });
+          },
         },
         "/files": {
           target: frappeUrl,

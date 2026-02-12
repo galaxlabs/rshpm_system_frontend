@@ -175,7 +175,12 @@ export const DOCTYPES: DoctypeConfig[] = [
 ];
 
 export function getDoctypeConfig(doctype: string) {
-  return DOCTYPES.find((d) => d.doctype === doctype);
+  const needle = (doctype || "").toLowerCase();
+  return DOCTYPES.find((d) => d.doctype.toLowerCase() === needle);
+}
+
+export function resolveDoctypeName(doctype: string) {
+  return getDoctypeConfig(doctype)?.doctype || doctype;
 }
 
 export function visibleFormFields(cfg: DoctypeConfig) {
