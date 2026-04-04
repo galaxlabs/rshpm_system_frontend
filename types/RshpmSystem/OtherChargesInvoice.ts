@@ -11,7 +11,7 @@ export interface OtherChargesInvoice{
 	parentfield?: string
 	parenttype?: string
 	idx?: number
-	/**	Company : Link - Company	*/
+	/**	Company : Link - Property Company	*/
 	company?: string
 	/**	Property : Link - Property	*/
 	property?: string
